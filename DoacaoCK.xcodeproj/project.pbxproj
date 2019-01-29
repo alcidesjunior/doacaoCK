@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A0E9F9E2200701100F67CDA /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0E9F9D2200701100F67CDA /* TableViewCell.swift */; };
 		1A712DDD22006C600056E7FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A712DDC22006C600056E7FF /* AppDelegate.swift */; };
 		1A712DDF22006C600056E7FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A712DDE22006C600056E7FF /* ViewController.swift */; };
 		1A712DE222006C600056E7FF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1A712DE022006C600056E7FF /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A0E9F9D2200701100F67CDA /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		1A712DD922006C600056E7FF /* DoacaoCK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DoacaoCK.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A712DDC22006C600056E7FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1A712DDE22006C600056E7FF /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 				1A712DDC22006C600056E7FF /* AppDelegate.swift */,
 				1A712DDE22006C600056E7FF /* ViewController.swift */,
 				1A712DE022006C600056E7FF /* Main.storyboard */,
+				1A0E9F9D2200701100F67CDA /* TableViewCell.swift */,
 				1A712DE322006C610056E7FF /* Assets.xcassets */,
 				1A712DE522006C610056E7FF /* LaunchScreen.storyboard */,
 				1A712DE822006C610056E7FF /* Info.plist */,
@@ -135,6 +138,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1A0E9F9E2200701100F67CDA /* TableViewCell.swift in Sources */,
 				1A712DDF22006C600056E7FF /* ViewController.swift in Sources */,
 				1A712DDD22006C600056E7FF /* AppDelegate.swift in Sources */,
 			);
