@@ -35,9 +35,13 @@ class ViewController: UIViewController {
             }
         }
         
+        inputNome.delegate = self
+        inputPesquisar.delegate = self
+
     }
     
     @IBAction func buscarButton(_ sender: Any) {
+        self.view.endEditing(true)
     }
     
     @IBAction func adicionarButton(_ sender: Any) {
@@ -51,6 +55,7 @@ class ViewController: UIViewController {
             DispatchQueue.main.async {
                 self.doacoes.append(record)
                 self.tableView.reloadData()
+                self.view.endEditing(true)
             }
         }
     }
@@ -69,4 +74,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         return cell
     }
     
+}
+extension ViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       textField.resignFirstResponder()
+       
+        return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        inputPesquisar.resignFirstResponder()
+        inputNome.resignFirstResponder()
+        self.view.endEditing(true)
+    }
 }
