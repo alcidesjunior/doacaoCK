@@ -40,8 +40,36 @@ class ViewController: UIViewController {
 
     }
     
+    func QjueryDataBase(search: String)  {
+        
+        if search == ""{
+            self.manager.search(using: NSPredicate(value: true)) { (records) in
+                guard let records = records else { return }
+                
+                DispatchQueue.main.async {
+                    self.doacoes = records
+                    
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        else{
+            let user = inputPesquisar.text
+            self.manager.search(using: NSPredicate(format: "nome == %@", user!)) { (records) in
+                guard let records = records else { return }
+                DispatchQueue.main.async {
+                    self.doacoes = records
+                    
+                    self.tableView.reloadData()
+                }
+            
+        }
+    }
+    }
+    
     @IBAction func buscarButton(_ sender: Any) {
         self.view.endEditing(true)
+        QjueryDataBase(search: inputPesquisar.text!)
     }
     
     @IBAction func adicionarButton(_ sender: Any) {
@@ -58,6 +86,7 @@ class ViewController: UIViewController {
                 self.view.endEditing(true)
             }
         }
+         QjueryDataBase(search: inputPesquisar.text!)
     }
 }
 
