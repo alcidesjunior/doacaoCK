@@ -19,12 +19,16 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        inputNome.delegate = self
+        inputPesquisar.delegate = self
     }
 
     @IBAction func buscarButton(_ sender: Any) {
+        self.view.endEditing(true)
     }
     
     @IBAction func adicionarButton(_ sender: Any) {
+        self.view.endEditing(true)
     }
 }
 extension ViewController: UITableViewDelegate, UITableViewDataSource{
@@ -39,4 +43,16 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     
+}
+extension ViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+       textField.resignFirstResponder()
+       
+        return true
+    }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        inputPesquisar.resignFirstResponder()
+        inputNome.resignFirstResponder()
+        self.view.endEditing(true)
+    }
 }
