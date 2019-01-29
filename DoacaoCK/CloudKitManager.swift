@@ -13,18 +13,27 @@ class CloudKitManager: NSObject {
     
     private let container = CKContainer.default()
     
-    func queryDatabase(then completion: @escaping (([CKRecord]?) -> Void)) {
-        let query = CKQuery(recordType: "Doacao", predicate: NSPredicate(value: true))
+    func search(using predicate: NSPredicate, then completion: @escaping (([CKRecord]?) -> Void)) {
+        var records = [CKRecord]()
+        let query = CKQuery(recordType: "Doacao", predicate: predicate)
+        let operation = CKQueryOperation(query: query)
+        operation.desiredKeys = ["nome"]
         
-        self.container.privateCloudDatabase.perform(query, inZoneWith: nil) { (records, error) in
+        operation.recordFetchedBlock = { record in
+            records.append(record)
+        }
+        
+        operation.queryCompletionBlock = { (cursor, error) in
             guard error == nil else {
-                print(error!)
+                print(error)
                 completion(nil)
                 return
             }
             
             completion(records)
         }
+        
+        self.container.privateCloudDatabase.add(operation)
     }
     
     func save(record: CKRecord, then completion: @escaping ((CKRecord?) -> Void)) {

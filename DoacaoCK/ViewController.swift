@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        self.manager.queryDatabase { (records) in
+        self.manager.search(using: NSPredicate(value: true)) { (records) in
             guard let records = records else { return }
             
             DispatchQueue.main.async {
@@ -81,6 +81,7 @@ extension ViewController: UITextFieldDelegate{
        
         return true
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         inputPesquisar.resignFirstResponder()
         inputNome.resignFirstResponder()
