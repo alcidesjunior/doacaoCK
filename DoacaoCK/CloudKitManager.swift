@@ -17,7 +17,8 @@ class CloudKitManager: NSObject {
         var records = [CKRecord]()
         let query = CKQuery(recordType: "Doacao", predicate: predicate)
         let operation = CKQueryOperation(query: query)
-        operation.desiredKeys = ["nome"]
+        operation.desiredKeys = ["nome","photo"]
+      
         
         operation.recordFetchedBlock = { record in
             records.append(record)

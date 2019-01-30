@@ -30,18 +30,26 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="81.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oMA-DK-Hky">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oMA-DK-Hky">
                                                     <rect key="frame" x="15" y="8" width="64" height="64"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Fulano de tal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeP-IX-32x">
-                                                    <rect key="frame" x="96" y="11" width="245" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fulano de tal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DeP-IX-32x">
+                                                    <rect key="frame" x="96" y="11" width="98" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="oMA-DK-Hky" firstAttribute="leading" secondItem="3AE-Yy-3Oc" secondAttribute="leading" constant="15" id="36y-8i-nsj"/>
+                                                <constraint firstItem="DeP-IX-32x" firstAttribute="top" secondItem="3AE-Yy-3Oc" secondAttribute="top" constant="11" id="5Pe-8U-DlX"/>
+                                                <constraint firstItem="oMA-DK-Hky" firstAttribute="top" secondItem="3AE-Yy-3Oc" secondAttribute="top" constant="8" id="BzM-Ie-HWH"/>
+                                                <constraint firstAttribute="trailing" secondItem="DeP-IX-32x" secondAttribute="trailing" constant="181" id="DJh-He-cZF"/>
+                                                <constraint firstAttribute="bottom" secondItem="DeP-IX-32x" secondAttribute="bottom" constant="49.5" id="Jtv-w4-o3x"/>
+                                                <constraint firstAttribute="trailing" secondItem="oMA-DK-Hky" secondAttribute="trailing" constant="296" id="W4W-sC-Pav"/>
+                                                <constraint firstAttribute="bottom" secondItem="oMA-DK-Hky" secondAttribute="bottom" constant="9.5" id="nyk-n8-6MH"/>
+                                                <constraint firstItem="DeP-IX-32x" firstAttribute="leading" secondItem="oMA-DK-Hky" secondAttribute="trailing" constant="17" id="xiE-la-dAS"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="nomeLabel" destination="DeP-IX-32x" id="Q5r-UB-cCe"/>
@@ -98,6 +106,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LZ8-if-PUi">
+                                <rect key="frame" x="79" y="117" width="30" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <state key="normal" title="+"/>
+                                <connections>
+                                    <action selector="selectPhoto:" destination="BYZ-38-t0r" eventType="touchUpInside" id="uH3-Go-Sll"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
