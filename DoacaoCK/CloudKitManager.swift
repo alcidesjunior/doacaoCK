@@ -17,7 +17,7 @@ class CloudKitManager: NSObject {
         var records = [CKRecord]()
         let query = CKQuery(recordType: "Doacao", predicate: predicate)
         let operation = CKQueryOperation(query: query)
-        operation.desiredKeys = ["nome"]
+        operation.desiredKeys = ["nome","photo"]
         
         operation.recordFetchedBlock = { record in
             records.append(record)
@@ -25,6 +25,7 @@ class CloudKitManager: NSObject {
         
         operation.queryCompletionBlock = { (cursor, error) in
             guard error == nil else {
+                print("To aqui")
                 print(error)
                 completion(nil)
                 return
@@ -39,6 +40,7 @@ class CloudKitManager: NSObject {
     func save(record: CKRecord, then completion: @escaping ((CKRecord?) -> Void)) {
         self.container.privateCloudDatabase.save(record) { (record, error) in
             guard error == nil else {
+                 print("To aqui 2")
                 print(error!)
                 completion(nil)
                 return
