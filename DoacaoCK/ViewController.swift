@@ -22,6 +22,7 @@ class ViewController: UIViewController {
     let manager = CloudKitManager()
     var doacoes = [CKRecord]()
     var photoURL: URL!
+    var number = Int()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,25 +79,26 @@ class ViewController: UIViewController {
     @IBAction func adicionarButton(_ sender: Any) {
         if (photoURL == nil){
             self.notifyUser(title: "Alert", message: "No image was selected, please select an image")
+            return
         }
         let asset = CKAsset(fileURL: photoURL)
         let record = CKRecord(recordType: "Doacao")
         record["nome"] = self.inputNome.text
         record["photo"] = asset
         
-        self.manager.save(record: record) { (record) in
+        self.manager.save(record: record) { (savedRecord) in
             // Aqui era pra ser tratado o erro.
-            guard let record = record else { return }
+            guard let savedRecord = savedRecord else { return }
             
             DispatchQueue.main.async {
                 self.doacoes.append(record)
+                self.photoURL = nil
+                self.QjueryDataBase(search: "")
+                self.imagePreview.image = nil
                 self.tableView.reloadData()
                 self.view.endEditing(true)
             }
         }
-        QjueryDataBase(search: inputPesquisar.text!)
-        imagePreview.image = nil
-        photoURL = nil
         
     }
     
@@ -121,7 +123,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource{
         let photo = self.doacoes[indexPath.row].value(forKey: "photo") as? CKAsset
         let image = UIImage(contentsOfFile: (photo?.fileURL.path)!)
         cell.imageView?.image = image
-        self.photoURL = self.saveImageToFile(image!)
+//        self.photoURL = self.saveImageToFile(image!)
         
         cell.nomeLabel?.text = (self.doacoes[indexPath.row].value(forKey: "nome") as! String)
         return cell
@@ -157,10 +159,11 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
     func saveImageToFile(_ image: UIImage) -> URL {
         let filemgr = FileManager.default
         let dirPaths = filemgr.urls(for: .documentDirectory, in: .userDomainMask)
-        let fileURL = dirPaths[0].appendingPathComponent("CurrentImage.jpg")
+        let fileURL = dirPaths[0].appendingPathComponent("CurrentImage\(self.number).jpg")
         if let renderedJPEGData =  image.jpegData(compressionQuality: 0.5){
             try! renderedJPEGData.write(to: fileURL)
         }
+        self.number =  self.number+1
         return fileURL
     }
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
